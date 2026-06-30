@@ -1,12 +1,8 @@
 import { useParams, useNavigate } from "react-router-dom";
-import DashboardLayout
-from "../../layouts/DashboardLayout";
+import DashboardLayout from "../../layouts/DashboardLayout";
 
-import ExportButtons
-from "../../components/reports/ExportButtons";
-
-import ReportPreview
-from "../../components/reports/ReportPreview";
+import ExportButtons from "../../components/reports/ExportButtons";
+import ReportPreview from "../../components/reports/ReportPreview";
 
 import { useReport } from "../../hooks/useReport";
 import { useAuditRefresh } from "../../hooks/useAuditRefresh";
@@ -26,9 +22,9 @@ export default function Reports() {
   if (!id) {
     return (
       <DashboardLayout>
-        <div className="text-slate-300 p-8 text-center">
-          <h2 className="text-2xl font-bold text-white mb-4">Select an Audit</h2>
-          <p>Go to your audit history and pick an audit to view its report.</p>
+        <div className="text-center py-24">
+          <h1 className="text-white text-4xl font-bold tracking-tight mb-4">Reports</h1>
+          <p className="text-slate-400 text-lg">Select an audit from your history to view its report.</p>
         </div>
       </DashboardLayout>
     );
@@ -37,7 +33,10 @@ export default function Reports() {
   if (isLoading) {
     return (
       <DashboardLayout>
-        <div className="text-slate-300 p-8">Loading report...</div>
+        <div className="text-center py-24">
+          <h1 className="text-white text-4xl font-bold tracking-tight mb-4">Reports</h1>
+          <p className="text-slate-400 text-lg animate-pulse">Loading report...</p>
+        </div>
       </DashboardLayout>
     );
   }
@@ -45,7 +44,16 @@ export default function Reports() {
   if (!data) {
     return (
       <DashboardLayout>
-        <div className="text-slate-300 p-8">Report not found.</div>
+        <div className="text-center py-24">
+          <h1 className="text-white text-4xl font-bold tracking-tight mb-4">Reports</h1>
+          <p className="text-slate-400 text-lg">Report not found.</p>
+          <button
+            onClick={() => navigate("/history")}
+            className="mt-6 bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg font-semibold transition-colors"
+          >
+            Back to History
+          </button>
+        </div>
       </DashboardLayout>
     );
   }
@@ -58,7 +66,7 @@ export default function Reports() {
           <button
             onClick={handleRefresh}
             disabled={refreshMutation.isPending}
-            className="rounded-2xl bg-sky-600 px-4 py-2 text-white hover:bg-sky-500 transition disabled:opacity-50"
+            className="bg-sky-600 hover:bg-sky-500 text-white px-5 py-2.5 rounded-lg font-semibold text-sm transition disabled:opacity-50"
           >
             {refreshMutation.isPending ? "Refreshing..." : "Refresh Data"}
           </button>

@@ -120,89 +120,72 @@ export default function Analysis() {
               </div>
             </div>
 
-            <div className="bg-slate-900 border border-white/10 rounded-3xl p-6">
-              <div className="flex items-center justify-between mb-4">
-                <div>
-                  <p className="text-slate-400 text-xs uppercase tracking-[0.3em]">Technical Architecture</p>
-                  <h2 className="text-white text-xl font-semibold mt-2">Performance & Structure</h2>
-                </div>
-                <div className="text-slate-400 text-xs">{data.technical.mobileReady ? "Pass" : "Fail"}</div>
-              </div>
-              <div className="grid grid-cols-2 gap-4 mb-4">
-                <div className="bg-slate-950/80 border border-white/5 rounded-2xl p-4">
-                  <p className="text-slate-400 text-[10px] uppercase tracking-[0.2em] mb-2">Load Speed</p>
-                  <p className="text-white text-2xl font-semibold">{data.technical.loadSpeedSeconds}s</p>
-                  <p className="text-slate-500 text-xs mt-2">Core Web Vital</p>
-                </div>
-                <div className="bg-slate-950/80 border border-white/5 rounded-2xl p-4">
-                  <p className="text-slate-400 text-[10px] uppercase tracking-[0.2em] mb-2">Mobile Ready</p>
-                  <p className="text-white text-2xl font-semibold">{data.technical.mobileReady ? "Yes" : "No"}</p>
-                  <p className="text-slate-500 text-xs mt-2">Responsive layout</p>
-                </div>
-              </div>
-              <div className="space-y-3">
-                <div className="bg-slate-950/80 border border-white/5 rounded-2xl p-4">
-                  <p className="text-slate-400 text-[10px] uppercase tracking-[0.2em] mb-2">Images Missing Alt</p>
-                  <p className="text-white text-2xl font-semibold">{data.technical.imagesMissingAlt}</p>
-                  <p className="text-slate-500 text-xs mt-2">Alt text needed</p>
-                </div>
-                <div className="bg-slate-950/80 border border-white/5 rounded-2xl p-4">
-                  <p className="text-slate-400 text-[10px] uppercase tracking-[0.2em] mb-2">Structured Data</p>
-                  <p className="text-white text-2xl font-semibold">{data.technical.structuredDataFound ? "Found" : "Not Found"}</p>
-                  <p className="text-slate-500 text-xs mt-2">{data.technical.structuredDataFound ? "JSON-LD schema present" : "Missing JSON-LD schema"}</p>
-                </div>
-              </div>
-            </div>
           </div>
         </div>
 
         <div className="grid grid-cols-1 xl:grid-cols-[1.4fr_1fr] gap-6">
-          <div className="space-y-6">
-            <div className="bg-slate-900 border border-white/10 rounded-3xl p-6">
-              <div className="flex items-center justify-between mb-4">
-                <div>
-                  <p className="text-slate-400 text-xs uppercase tracking-[0.3em]">DOM Hierarchy Inspector</p>
-                  <h2 className="text-white text-xl font-semibold mt-2">H1 → Content Structure</h2>
-                </div>
-                <span className={`text-xs uppercase tracking-[0.2em] ${data.headings.h1HasKeyword ? "text-green-400" : "text-sky-300"}`}>
-                  {data.headings.h1HasKeyword ? "Keyword Found" : "Missing Keyword"}
-                </span>
-              </div>
-              <div className="bg-slate-950/80 border border-white/5 rounded-2xl p-4 mb-4">
-                <p className="text-slate-400 text-[10px] uppercase tracking-[0.2em] mb-2">H1 Tag Found</p>
-                <p className="text-white">"{data.headings.h1 ?? "N/A"}"</p>
-              </div>
-              <div className="grid grid-cols-2 gap-4 mb-4">
-                <div className="bg-slate-950/80 border border-white/5 rounded-2xl p-4">
-                  <p className="text-slate-400 text-[10px] uppercase tracking-[0.2em] mb-2">Total H2s</p>
-                  <p className="text-white font-semibold">{data.headings.h2Count}</p>
-                </div>
-                <div className="bg-slate-950/80 border border-white/5 rounded-2xl p-4">
-                  <p className="text-slate-400 text-[10px] uppercase tracking-[0.2em] mb-2">H2 Matches</p>
-                  <p className="text-white font-semibold">{data.headings.h2KeywordMatches}</p>
-                </div>
-              </div>
-              <div className="space-y-2 text-slate-400 text-sm">
-                {data.headings.sampleH2?.map((h2: string, i: number) => (
-                  <div key={i}>{h2}</div>
-                ))}
-              </div>
-            </div>
-          </div>
           <div className="bg-slate-900 border border-white/10 rounded-3xl p-6">
             <div className="flex items-center justify-between mb-4">
               <div>
-                <p className="text-slate-400 text-xs uppercase tracking-[0.3em]">Visual Content Mapping</p>
-                <h2 className="text-white text-xl font-semibold mt-2">Media & Design Assets</h2>
+                <p className="text-slate-400 text-xs uppercase tracking-[0.3em]">DOM Hierarchy Inspector</p>
+                <h2 className="text-white text-xl font-semibold mt-2">H1 → Content Structure</h2>
               </div>
-              <button className="text-sky-300 text-sm font-semibold">Full Snapshot</button>
+              <span className={`text-xs uppercase tracking-[0.2em] ${data.headings.h1HasKeyword ? "text-green-400" : "text-sky-300"}`}>
+                {data.headings.h1HasKeyword ? "Keyword Found" : "Missing Keyword"}
+              </span>
             </div>
-            <div className="grid grid-cols-1 gap-4">
-              {['Hero Section','Category Grid','Schema Footer'].map((label) => (
-                <div key={label} className="h-32 rounded-3xl bg-gradient-to-r from-slate-900 via-slate-800 to-slate-950 border border-white/10 flex items-end p-4 text-slate-200 text-sm font-semibold">
-                  {label}
-                </div>
+            <div className="bg-slate-950/80 border border-white/5 rounded-2xl p-4 mb-4">
+              <p className="text-slate-400 text-[10px] uppercase tracking-[0.2em] mb-2">H1 Tag Found</p>
+              <p className="text-white">"{data.headings.h1 ?? "N/A"}"</p>
+            </div>
+            <div className="grid grid-cols-2 gap-4 mb-4">
+              <div className="bg-slate-950/80 border border-white/5 rounded-2xl p-4">
+                <p className="text-slate-400 text-[10px] uppercase tracking-[0.2em] mb-2">Total H2s</p>
+                <p className="text-white font-semibold">{data.headings.h2Count}</p>
+              </div>
+              <div className="bg-slate-950/80 border border-white/5 rounded-2xl p-4">
+                <p className="text-slate-400 text-[10px] uppercase tracking-[0.2em] mb-2">H2 Matches</p>
+                <p className="text-white font-semibold">{data.headings.h2KeywordMatches}</p>
+              </div>
+            </div>
+            <div className="space-y-2 text-slate-400 text-sm">
+              {data.headings.sampleH2?.map((h2: string, i: number) => (
+                <div key={i}>{h2}</div>
               ))}
+            </div>
+          </div>
+
+          <div className="bg-slate-900 border border-white/10 rounded-3xl p-6">
+            <div className="flex items-center justify-between mb-4">
+              <div>
+                <p className="text-slate-400 text-xs uppercase tracking-[0.3em]">Technical Architecture</p>
+                <h2 className="text-white text-xl font-semibold mt-2">Performance & Structure</h2>
+              </div>
+              <div className="text-slate-400 text-xs">{data.technical.mobileReady ? "Pass" : "Fail"}</div>
+            </div>
+            <div className="grid grid-cols-2 gap-4 mb-4">
+              <div className="bg-slate-950/80 border border-white/5 rounded-2xl p-4">
+                <p className="text-slate-400 text-[10px] uppercase tracking-[0.2em] mb-2">Load Speed</p>
+                <p className="text-white text-2xl font-semibold">{data.technical.loadSpeedSeconds}s</p>
+                <p className="text-slate-500 text-xs mt-2">Core Web Vital</p>
+              </div>
+              <div className="bg-slate-950/80 border border-white/5 rounded-2xl p-4">
+                <p className="text-slate-400 text-[10px] uppercase tracking-[0.2em] mb-2">Mobile Ready</p>
+                <p className="text-white text-2xl font-semibold">{data.technical.mobileReady ? "Yes" : "No"}</p>
+                <p className="text-slate-500 text-xs mt-2">Responsive layout</p>
+              </div>
+            </div>
+            <div className="space-y-3">
+              <div className="bg-slate-950/80 border border-white/5 rounded-2xl p-4">
+                <p className="text-slate-400 text-[10px] uppercase tracking-[0.2em] mb-2">Images Missing Alt</p>
+                <p className="text-white text-2xl font-semibold">{data.technical.imagesMissingAlt}</p>
+                <p className="text-slate-500 text-xs mt-2">Alt text needed</p>
+              </div>
+              <div className="bg-slate-950/80 border border-white/5 rounded-2xl p-4">
+                <p className="text-slate-400 text-[10px] uppercase tracking-[0.2em] mb-2">Structured Data</p>
+                <p className="text-white text-2xl font-semibold">{data.technical.structuredDataFound ? "Found" : "Not Found"}</p>
+                <p className="text-slate-500 text-xs mt-2">{data.technical.structuredDataFound ? "JSON-LD schema present" : "Missing JSON-LD schema"}</p>
+              </div>
             </div>
           </div>
         </div>
