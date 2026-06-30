@@ -33,15 +33,15 @@ bg-slate-800">
 Rank
 </th>
 
-<th className="text-slate-400 text-xs uppercase tracking-[0.3em]">
+<th className="p-4 text-slate-400 text-xs uppercase tracking-[0.3em]">
 Domain
 </th>
 
-<th className="text-slate-400 text-xs uppercase tracking-[0.3em]">
+<th className="p-4 text-slate-400 text-xs uppercase tracking-[0.3em]">
 Words
 </th>
 
-<th className="text-slate-400 text-xs uppercase tracking-[0.3em]">
+<th className="p-4 text-slate-400 text-xs uppercase tracking-[0.3em]">
 H1
 </th>
 
@@ -64,15 +64,15 @@ border-slate-800">
 {c.rank}
 </td>
 
-<td className="text-white">
+<td className="p-4 text-white">
 {c.domain}
 </td>
 
-<td className="text-white">
+<td className="p-4 text-white">
 {c.wordCount}
 </td>
 
-<td className="text-white">
+<td className="p-4 text-white">
 {c.h1Count}
 </td>
 

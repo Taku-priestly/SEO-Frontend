@@ -33,7 +33,8 @@ export default function DashboardOverview() {
 
   const handleSubmit = async () => {
     if (!url || !keyword) return;
-    const result = await auditMutation.mutateAsync({ url, keyword });
+    const normalizedUrl = url.match(/^https?:\/\//) ? url : `https://${url}`;
+    const result = await auditMutation.mutateAsync({ url: normalizedUrl, keyword });
     navigate(`/audit-progress/${result.audit_id}`);
   };
 
