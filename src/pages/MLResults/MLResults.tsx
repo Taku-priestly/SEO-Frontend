@@ -14,9 +14,6 @@ from "../../components/ml/PredictionCard";
 import FeatureImportanceChart
 from "../../components/ml/FeatureImportanceChart";
 
-import OptimizationImpactChart
-from "../../components/ml/OptimizationImpactChart";
-
 import RecommendationSummary
 from "../../components/ml/RecommendationSummary";
 
@@ -81,12 +78,10 @@ export default function MLResults() {
         <PredictionCard title="Linking Domains" value={data.linkingDomains?.toLocaleString() ?? "-"} />
       </div>
 
-      <div className="grid grid-cols-2 gap-6 mb-6">
+      <div className="grid grid-rows-2 gap-6 mb-6">
         <FeatureImportanceChart items={data.featureImportance ?? []} />
-        <OptimizationImpactChart items={data.optimizationImpact ?? []} />
+        <RecommendationSummary items={data.recommendations ?? []} />
       </div>
-
-      <RecommendationSummary items={data.recommendations ?? []} />
     </DashboardLayout>
   );
 }

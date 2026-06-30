@@ -9,7 +9,7 @@ export default function TimelineCard({ items }: Props) {
       <h2 className="text-white mb-4">Implementation Timeline</h2>
       {phases.length === 0 && <p className="text-slate-400">No timeline data.</p>}
       {phases.map((phase) => (
-        <div key={phase} className="py-3 border-b border-slate-800">
+        <div key={phase} className="py-3 border-b border-slate-800 text-slate-400">
           {phase}
         </div>
       ))}
