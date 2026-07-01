@@ -1,10 +1,15 @@
 import { useNavigate, useLocation } from "react-router-dom";
+import { Sun, Moon } from "lucide-react";
 import { useProfile } from "../../hooks/useProfile";
+import { useThemeStore } from "../../store/themeStore";
+import NotificationBell from "../notifications/NotificationBell";
 
 export default function Header() {
   const navigate = useNavigate();
   const location = useLocation();
   const { profile } = useProfile();
+  const theme = useThemeStore((s) => s.theme);
+  const toggleTheme = useThemeStore((s) => s.toggle);
 
   const isActive = (path: string) => location.pathname.includes(path);
 
@@ -47,7 +52,14 @@ export default function Header() {
       </div>
 
       <div className="flex items-center gap-4">
-        <button className="text-slate-400 hover:text-white">🔔</button>
+        <button
+          onClick={toggleTheme}
+          className="text-slate-400 hover:text-white transition-colors"
+          aria-label="Toggle theme"
+        >
+          {theme === "dark" ? <Sun size={20} /> : <Moon size={20} />}
+        </button>
+        <NotificationBell />
         <img 
           src={profile.profilePicture || "https://i.pravatar.cc/40?u=admin"} 
           alt="Profile" 

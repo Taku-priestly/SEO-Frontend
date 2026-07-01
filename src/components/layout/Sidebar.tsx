@@ -1,9 +1,12 @@
 import { useNavigate, useLocation } from "react-router-dom";
-import { HelpCircle, LogOut } from "lucide-react";
+import { HelpCircle, LogOut, Sun, Moon } from "lucide-react";
+import { useThemeStore } from "../../store/themeStore";
 
 export default function Sidebar() {
   const navigate = useNavigate();
   const location = useLocation();
+  const theme = useThemeStore((s) => s.theme);
+  const toggleTheme = useThemeStore((s) => s.toggle);
 
   const isActive = (path: string) => location.pathname.includes(path);
 
@@ -19,6 +22,7 @@ export default function Sidebar() {
 
   const menuItems = [
     { label: "ANALYSIS", icon: "\uD83D\uDCCA", path: "/analysis" },
+    { label: "COMPETITORS", icon: "\uD83C\uDFC6", path: "/competitors" },
     { label: "ML RESULTS", icon: "\uD83E\uDD16", path: "/ml-results" },
     { label: "ROADMAP", icon: "\uD83D\uDDFA\uFE0F", path: "/roadmap" },
     { label: "REPORTS", icon: "\uD83D\uDCC4", path: "/reports" },
@@ -56,6 +60,13 @@ export default function Sidebar() {
       </nav>
 
       <div className="border-t border-slate-800 p-4 space-y-2">
+        <button
+          onClick={toggleTheme}
+          className="w-full flex items-center gap-3 text-slate-400 hover:text-white hover:bg-slate-800/50 px-4 py-3 rounded-lg transition-colors"
+        >
+          {theme === "dark" ? <Sun size={18} /> : <Moon size={18} />}
+          <span className="text-sm">{theme === "dark" ? "LIGHT MODE" : "DARK MODE"}</span>
+        </button>
         <button
           onClick={() => alert("Help center coming soon!")}
           className="w-full flex items-center gap-3 text-slate-400 hover:text-white hover:bg-slate-800/50 px-4 py-3 rounded-lg transition-colors"

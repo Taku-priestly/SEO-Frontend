@@ -7,7 +7,7 @@ export default function DashboardLayout({
  children: React.ReactNode;
 }) {
 
- return (
+  return (
 
 <div className="flex h-screen">
 
@@ -27,5 +27,5 @@ export default function DashboardLayout({
 
 </div>
 
- );
+  );
 }

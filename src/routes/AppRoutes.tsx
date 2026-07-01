@@ -19,8 +19,14 @@ from "../pages/Audit/NewAudit";
 import AuditProgress
 from "../pages/Audit/AuditProgress";
 
+import Landing
+from "../pages/Landing/Landing";
+
 import Analysis
 from "../pages/Analysis/Analysis";
+
+import Competitors
+from "../pages/Competitors/Competitors";
 
 import MLResults
 from "../pages/MLResults/MLResults";
@@ -48,7 +54,7 @@ export default function AppRoutes() {
 
 <Route
 path="/"
-element={<Login />}
+element={<Landing />}
 />
 
 <Route
@@ -77,13 +83,23 @@ element={<AuditProgress />}
 />
 
  <Route
- path="/analysis"
- element={<Analysis />}
+  path="/analysis"
+  element={<Analysis />}
 />
 
 <Route
- path="/analysis/:id"
- element={<Analysis />}
+  path="/analysis/:id"
+  element={<Analysis />}
+/>
+
+<Route
+  path="/competitors"
+  element={<Competitors />}
+/>
+
+<Route
+  path="/competitors/:id"
+  element={<Competitors />}
 />
 
 <Route
